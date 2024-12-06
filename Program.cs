@@ -5,8 +5,43 @@ namespace Weapontask
     internal class Program
     {
         static void Main(string[] args)
-        {
-            Weapon ak47 = new Weapon(30, 25, FireMode.Single);
+        {           
+            Console.WriteLine("Enter Bullet Capacity:");
+            int bulletCapacity = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter Magazine Count:");
+            int magazine = int.Parse(Console.ReadLine());
+
+            if (magazine > bulletCapacity)
+            {
+                Console.WriteLine("Magazine count cannot be greater than bullet capacity. Exiting program.");
+                return;
+            }
+
+            Console.WriteLine("Enter fire mode (0 - Single, 1 - Burst, 2 - Auto)");
+            string fireModeInput = Console.ReadLine();
+            FireMode fireMode;
+
+            switch (fireModeInput)
+            {
+                case "0":
+                    fireMode = FireMode.Single;
+                    break;
+                case "1":
+                    fireMode = FireMode.Burst;
+                    break;
+                case "2":
+                    fireMode = FireMode.Auto;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Fire Mode. Exiting program.");
+                    return;
+            }
+
+            
+            Weapon ak47 = new Weapon(bulletCapacity, magazine, fireMode);
+
+            Console.WriteLine("Weapon Created");
             #region testing...
             //ak47.Shoot();
             //ak47.Fire();
@@ -23,7 +58,6 @@ namespace Weapontask
             bool exit = false;
             while (!exit)
             {
-                Console.WriteLine("Created By Sabit Jafarov");
                 Console.WriteLine("\nChoose an option:");
                 Console.WriteLine("0 - Show info");
                 Console.WriteLine("1 - Shoot");
@@ -55,16 +89,16 @@ namespace Weapontask
                         break;
                     case "5":
                         Console.WriteLine("Enter fire mode (0 - Single, 1 - Burst, 2 - Auto)");
-                        string fireModeInput = Console.ReadLine();
-                        if (fireModeInput == "0")
+                        string fireModeIn = Console.ReadLine();
+                        if (fireModeIn == "0")
                         {
                             ak47.SetFireMode(FireMode.Single);
                         }
-                        else if (fireModeInput == "1")
+                        else if (fireModeIn == "1")
                         {
                             ak47.SetFireMode(FireMode.Burst);
                         }
-                        else if (fireModeInput == "2")
+                        else if (fireModeIn == "2")
                         {
                             ak47.SetFireMode(FireMode.Auto);
                         }
