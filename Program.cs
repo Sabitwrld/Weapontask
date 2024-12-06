@@ -5,7 +5,7 @@ namespace Weapontask
     internal class Program
     {
         static void Main(string[] args)
-        {           
+        {
             Console.WriteLine("Enter Bullet Capacity:");
             int bulletCapacity = int.Parse(Console.ReadLine());
 
@@ -38,7 +38,7 @@ namespace Weapontask
                     return;
             }
 
-            
+
             Weapon ak47 = new Weapon(bulletCapacity, magazine, fireMode);
 
             Console.WriteLine("Weapon Created");
